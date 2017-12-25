@@ -10,6 +10,23 @@
 
 @interface GoodsMenusCell : UICollectionViewCell
 
+/**
+ 显示的类目
+ */
 @property (nonatomic, copy) NSString *title;
 
+/**
+ 是否选中
+ */
+@property (nonatomic, assign) BOOL cellSelected;
+
+/**
+ 未选中时的颜色
+ */
+@property (nonatomic, strong) UIColor *normalColor;
+
+/**
+ 选中时的颜色
+ */
+@property (nonatomic, strong) UIColor *selectedColor;
 @end

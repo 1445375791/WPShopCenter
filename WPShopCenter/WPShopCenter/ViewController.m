@@ -18,9 +18,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    NSMutableArray<NSString *> *menus = @[@"类目一", @"类目二", @"类目三", @"类目四", @"类目五", @"类目六"].mutableCopy;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    NSMutableArray<NSString *> *menus = @[@"类目一", @"类目二", @"类目三", @"类目四", @"类目五", @"类目六", @"类目七", @"类目八", @"类目九"].mutableCopy;
     GoodsTopView *topView = [[GoodsTopView alloc] initTheTopGoodsViewWithFrame:CGRectMake(0, 64, 375, 44)];
     topView.goodsMenus = menus;
+    [topView didSelectGoodsMenusWithBlock:^(NSString *menuTitle) {
+        NSLog(@"%@", menuTitle);
+    }];
     [self.view addSubview:topView];
 }
 
