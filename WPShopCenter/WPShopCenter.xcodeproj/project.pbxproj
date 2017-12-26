@@ -18,6 +18,10 @@
 		7646EB511FF0E35400DB035F /* GoodsLeftView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7646EB501FF0E35400DB035F /* GoodsLeftView.m */; };
 		7646EB541FF0E39E00DB035F /* GoodsListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7646EB531FF0E39E00DB035F /* GoodsListView.m */; };
 		7646EB571FF0EF0500DB035F /* GoodsMenusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7646EB561FF0EF0500DB035F /* GoodsMenusCell.m */; };
+		765DEAD21FF21A5A0011E05E /* SecondMenusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 765DEAD11FF21A5A0011E05E /* SecondMenusCell.m */; };
+		765DEAD51FF22E650011E05E /* WPGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 765DEAD41FF22E650011E05E /* WPGoodsModel.m */; };
+		765DEAD81FF241E10011E05E /* GoodsListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 765DEAD71FF241E10011E05E /* GoodsListViewCell.m */; };
+		765DEADB1FF242020011E05E /* GoodsCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 765DEADA1FF242020011E05E /* GoodsCollectionCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +45,14 @@
 		7646EB531FF0E39E00DB035F /* GoodsListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsListView.m; sourceTree = "<group>"; };
 		7646EB551FF0EF0500DB035F /* GoodsMenusCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsMenusCell.h; sourceTree = "<group>"; };
 		7646EB561FF0EF0500DB035F /* GoodsMenusCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsMenusCell.m; sourceTree = "<group>"; };
+		765DEAD01FF21A5A0011E05E /* SecondMenusCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondMenusCell.h; sourceTree = "<group>"; };
+		765DEAD11FF21A5A0011E05E /* SecondMenusCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondMenusCell.m; sourceTree = "<group>"; };
+		765DEAD31FF22E650011E05E /* WPGoodsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WPGoodsModel.h; sourceTree = "<group>"; };
+		765DEAD41FF22E650011E05E /* WPGoodsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WPGoodsModel.m; sourceTree = "<group>"; };
+		765DEAD61FF241E10011E05E /* GoodsListViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsListViewCell.h; sourceTree = "<group>"; };
+		765DEAD71FF241E10011E05E /* GoodsListViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsListViewCell.m; sourceTree = "<group>"; };
+		765DEAD91FF242020011E05E /* GoodsCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsCollectionCell.h; sourceTree = "<group>"; };
+		765DEADA1FF242020011E05E /* GoodsCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsCollectionCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +113,8 @@
 		7646EB451FF0E26300DB035F /* WPShopCenterModels */ = {
 			isa = PBXGroup;
 			children = (
+				765DEAD31FF22E650011E05E /* WPGoodsModel.h */,
+				765DEAD41FF22E650011E05E /* WPGoodsModel.m */,
 			);
 			path = WPShopCenterModels;
 			sourceTree = "<group>";
@@ -117,6 +131,10 @@
 		7646EB471FF0E26300DB035F /* WPShopCenterCells */ = {
 			isa = PBXGroup;
 			children = (
+				765DEAD61FF241E10011E05E /* GoodsListViewCell.h */,
+				765DEAD71FF241E10011E05E /* GoodsListViewCell.m */,
+				765DEAD91FF242020011E05E /* GoodsCollectionCell.h */,
+				765DEADA1FF242020011E05E /* GoodsCollectionCell.m */,
 			);
 			path = WPShopCenterCells;
 			sourceTree = "<group>";
@@ -132,6 +150,8 @@
 				7646EB531FF0E39E00DB035F /* GoodsListView.m */,
 				7646EB551FF0EF0500DB035F /* GoodsMenusCell.h */,
 				7646EB561FF0EF0500DB035F /* GoodsMenusCell.m */,
+				765DEAD01FF21A5A0011E05E /* SecondMenusCell.h */,
+				765DEAD11FF21A5A0011E05E /* SecondMenusCell.m */,
 			);
 			path = WPShopCenterViews;
 			sourceTree = "<group>";
@@ -211,10 +231,14 @@
 				7646EB331FF0E12200DB035F /* ViewController.m in Sources */,
 				7646EB3E1FF0E12200DB035F /* main.m in Sources */,
 				7646EB301FF0E12200DB035F /* AppDelegate.m in Sources */,
+				765DEADB1FF242020011E05E /* GoodsCollectionCell.m in Sources */,
 				7646EB511FF0E35400DB035F /* GoodsLeftView.m in Sources */,
 				7646EB541FF0E39E00DB035F /* GoodsListView.m in Sources */,
 				7646EB4A1FF0E29000DB035F /* ShopBaseViewController.m in Sources */,
+				765DEAD51FF22E650011E05E /* WPGoodsModel.m in Sources */,
 				7646EB571FF0EF0500DB035F /* GoodsMenusCell.m in Sources */,
+				765DEAD21FF21A5A0011E05E /* SecondMenusCell.m in Sources */,
+				765DEAD81FF241E10011E05E /* GoodsListViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
