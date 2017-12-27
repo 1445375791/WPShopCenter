@@ -45,7 +45,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="商城" id="0y9-RP-0Yg"/>
+                    <navigationItem key="navigationItem" title="商城" id="1eg-x8-0XB">
+                        <barButtonItem key="rightBarButtonItem" title="切换" style="plain" id="mof-ma-by3">
+                            <connections>
+                                <action selector="changShowType:" destination="BYZ-38-t0r" id="NtO-aJ-Vqd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

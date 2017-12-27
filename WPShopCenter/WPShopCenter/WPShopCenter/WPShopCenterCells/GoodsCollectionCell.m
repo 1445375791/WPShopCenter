@@ -7,6 +7,7 @@
 //
 
 #import "GoodsCollectionCell.h"
+#import "WPGoodsModel.h"
 
 @interface GoodsCollectionCell ()
 
@@ -68,6 +69,14 @@
     return self;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    _goodsImageView.frame = CGRectMake(0, 0, CGRectGetWidth(self.bounds), CGRectGetWidth(self.bounds));
+    _titleLabel.frame = CGRectMake(0, CGRectGetMaxY(_goodsImageView.frame), CGRectGetWidth(_goodsImageView.frame), 30);
+    _priceLabel.frame = CGRectMake(0, CGRectGetMaxY(_titleLabel.frame), CGRectGetWidth(_titleLabel.frame) / 2.0, 20);
+    _invenLabel.frame = CGRectMake(CGRectGetMaxX(_priceLabel.frame), CGRectGetMinY(_priceLabel.frame), CGRectGetWidth(_priceLabel.frame), CGRectGetHeight(_priceLabel.frame));
+}
 
 /**
  给视图赋值
@@ -75,7 +84,11 @@
  @param model 对象
  */
 - (void)buildTheViewCellWithModel:(WPGoodsModel *)model {
-    
+//    _goodsImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:model.goodPic]]];
+     _goodsImageView.image = [UIImage imageNamed:model.goodPic];
+    _titleLabel.text = model.title;
+    _priceLabel.text = [NSString stringWithFormat:@"￥%@/件", model.price];
+    _invenLabel.text = [NSString stringWithFormat:@"%@件", model.inventory];
 }
 
 @end

@@ -14,6 +14,9 @@ typedef enum : NSUInteger {
 } WPGoodsShowType;
 
 @class WPGoodsModel;
+
+typedef void(^SelectModelItemBlock)(WPGoodsModel *selectedModel);
+
 @interface GoodsListView : UIView
 
 /**
@@ -27,11 +30,23 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) WPGoodsShowType goodsShowType;
 
 /**
+ 选择的model
+ */
+@property (nonatomic, copy) SelectModelItemBlock selectModelBlock;
+
+/**
  初始化数据
 
  @param frame frame
  @return 对象
  */
 - (instancetype)initListViewWithFrame:(CGRect)frame;
+
+/**
+ 点击选择model
+
+ @param selectBlock 回调
+ */
+- (void)didSelectModelItemWithBlock:(SelectModelItemBlock)selectBlock;
 
 @end

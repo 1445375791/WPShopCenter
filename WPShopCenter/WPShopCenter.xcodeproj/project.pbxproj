@@ -22,6 +22,7 @@
 		765DEAD51FF22E650011E05E /* WPGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 765DEAD41FF22E650011E05E /* WPGoodsModel.m */; };
 		765DEAD81FF241E10011E05E /* GoodsListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 765DEAD71FF241E10011E05E /* GoodsListViewCell.m */; };
 		765DEADB1FF242020011E05E /* GoodsCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 765DEADA1FF242020011E05E /* GoodsCollectionCell.m */; };
+		76C776781FF33C2E008A793C /* pic1.png in Resources */ = {isa = PBXBuildFile; fileRef = 76C776771FF33C2E008A793C /* pic1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		765DEAD71FF241E10011E05E /* GoodsListViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsListViewCell.m; sourceTree = "<group>"; };
 		765DEAD91FF242020011E05E /* GoodsCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsCollectionCell.h; sourceTree = "<group>"; };
 		765DEADA1FF242020011E05E /* GoodsCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsCollectionCell.m; sourceTree = "<group>"; };
+		76C776771FF33C2E008A793C /* pic1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				7646EB2F1FF0E12200DB035F /* AppDelegate.m */,
 				7646EB311FF0E12200DB035F /* ViewController.h */,
 				7646EB321FF0E12200DB035F /* ViewController.m */,
+				76C776771FF33C2E008A793C /* pic1.png */,
 				7646EB341FF0E12200DB035F /* Main.storyboard */,
 				7646EB371FF0E12200DB035F /* Assets.xcassets */,
 				7646EB391FF0E12200DB035F /* LaunchScreen.storyboard */,
@@ -214,6 +217,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76C776781FF33C2E008A793C /* pic1.png in Resources */,
 				7646EB3B1FF0E12200DB035F /* LaunchScreen.storyboard in Resources */,
 				7646EB381FF0E12200DB035F /* Assets.xcassets in Resources */,
 				7646EB361FF0E12200DB035F /* Main.storyboard in Resources */,

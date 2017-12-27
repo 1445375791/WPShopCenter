@@ -8,6 +8,8 @@
 
 #import "GoodsListView.h"
 #import "WPGoodsModel.h"
+#import "GoodsListViewCell.h"
+#import "GoodsCollectionCell.h"
 
 @interface GoodsListView () <UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
@@ -77,6 +79,7 @@
         _goodsCollectionView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         _goodsCollectionView.dataSource = self;
         _goodsCollectionView.delegate = self;
+        [_goodsCollectionView registerClass:[GoodsCollectionCell class] forCellWithReuseIdentifier:NSStringFromClass([GoodsCollectionCell class])];
     }
     return _goodsCollectionView;
 }
@@ -121,18 +124,23 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifier = @"CELL";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    GoodsListViewCell *cell = [GoodsListViewCell cellWithTableView:tableView];
+    if (_goods && _goods.count > 0) {
+        [cell buildTheViewCellWithModel:_goods[indexPath.row]];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    WPGoodsModel *model = _goods[indexPath.row];
+    if (self.selectModelBlock) {
+        self.selectModelBlock(model);
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 90;
 }
 
 
@@ -146,24 +154,42 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"COCell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor redColor];
+    GoodsCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([GoodsCollectionCell class]) forIndexPath:indexPath];
+    if (_goods && _goods.count > 0) {
+        [cell buildTheViewCellWithModel:_goods[indexPath.row]];
+    }
     return cell;
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(100, 100);
+    CGFloat itemWidth = _viewFrame.size.width / 2.0 - 10;
+    return CGSizeMake(itemWidth, itemWidth + 50);
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-    return UIEdgeInsetsMake(5, 5, 5, 5);
+    return UIEdgeInsetsMake(5, 5, 10, 5);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return 10;
 }
 
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    return 10;
+}
+
+#pragma mark - UICollectionViewDelegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    WPGoodsModel *model = _goods[indexPath.row];
+    if (self.selectModelBlock) {
+        self.selectModelBlock(model);
+    }
+}
+
+- (void)didSelectModelItemWithBlock:(SelectModelItemBlock)selectBlock {
+    self.selectModelBlock = selectBlock;
+}
 
 
 @end

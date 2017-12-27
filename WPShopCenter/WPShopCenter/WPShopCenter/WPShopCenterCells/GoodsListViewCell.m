@@ -7,7 +7,7 @@
 //
 
 #import "GoodsListViewCell.h"
-
+#import "WPGoodsModel.h"
 @interface GoodsListViewCell () 
 
 /**
@@ -54,7 +54,6 @@
         // 标题
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _titleLabel.font = [UIFont systemFontOfSize:13];
-        _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.numberOfLines = 2;
         _titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
         [self.contentView addSubview:_titleLabel];
@@ -95,6 +94,23 @@
  @param model 对象
  */
 - (void)buildTheViewCellWithModel:(WPGoodsModel *)model {
+//    _goodsImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:model.goodPic]]];
+    _goodsImageView.image = [UIImage imageNamed:model.goodPic];
+    _titleLabel.text = model.title;
+    _priceLabel.text = [NSString stringWithFormat:@"￥%@/件", model.price];
+    _invenLabel.text = [NSString stringWithFormat:@"%@件", model.inventory];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    CGRect viewBounds = self.contentView.bounds;
+    viewBounds.size.width = _viewBounds.size.width;
+    self.contentView.bounds = viewBounds;
+    
+    _goodsImageView.frame = CGRectMake(5, 5, CGRectGetHeight(self.contentView.bounds) - 10, CGRectGetHeight(self.contentView.bounds) - 10);
+    _titleLabel.frame = CGRectMake(CGRectGetMaxX(_goodsImageView.frame) + 5, CGRectGetMinY(_goodsImageView.frame), CGRectGetWidth(self.bounds) - CGRectGetMaxX(_goodsImageView.frame) - 10, 20);
+    _priceLabel.frame = CGRectMake(CGRectGetMinX(_titleLabel.frame), CGRectGetMaxY(_titleLabel.frame) + 10, 100, 20);
+    _invenLabel.frame = CGRectMake(CGRectGetMinX(_priceLabel.frame), CGRectGetMaxY(_priceLabel.frame) + 10, 100, 20);
     
 }
 

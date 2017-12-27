@@ -9,12 +9,16 @@
 #import "ViewController.h"
 #import "GoodsTopView.h"
 #import "GoodsLeftView.h"
+#import "GoodsListView.h"
+#import "WPGoodsModel.h"
 
 @interface ViewController ()
 
 @property (nonatomic, strong) GoodsTopView *topView;
 
 @property (nonatomic, strong) GoodsLeftView *leftView;
+
+@property (nonatomic, strong) GoodsListView *listView;
 
 @end
 
@@ -44,6 +48,15 @@
         [strongSelf selectSecondMenu:menuTitle];
     }];
     [self.view addSubview:_leftView];
+    
+    _listView = [[GoodsListView alloc] initListViewWithFrame:CGRectMake(CGRectGetMaxX(_leftView.frame), CGRectGetMinY(_leftView.frame), CGRectGetWidth(self.view.frame) - CGRectGetMaxX(_leftView.frame), CGRectGetHeight(_leftView.frame))];
+    
+    _listView.goods = [self loadTestData];
+    [_listView didSelectModelItemWithBlock:^(WPGoodsModel *selectedModel) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf showPormptViewWithModel:selectedModel];
+    }];
+    [self.view addSubview:_listView];
 }
 
 /**
@@ -62,6 +75,40 @@
  */
 - (void)selectSecondMenu:(NSString *)secondMenu {
     
+}
+
+- (IBAction)changShowType:(id)sender {
+    WPGoodsShowType currentType = _listView.goodsShowType;
+    _listView.goodsShowType = currentType == WPGoodsShowTypeTableView ? WPGoodsShowTypeCollectionView : WPGoodsShowTypeTableView;
+}
+
+/**
+ 测试数据
+ */
+- (NSMutableArray<WPGoodsModel *> *)loadTestData {
+    NSMutableArray<WPGoodsModel *> *models = @[].mutableCopy;
+    for (int i = 0; i < 10; i++) {
+        WPGoodsModel *model = [[WPGoodsModel alloc] init];
+        model.goodId = [NSString stringWithFormat:@"%d", i];
+        model.goodPic = @"pic1";
+        model.title = [NSString stringWithFormat:@"%@ %d", @"美丽风景画限时出售", i];
+        model.price = [NSString stringWithFormat:@"%@", [NSNumber numberWithInt:(100 + i)]];
+        model.inventory = [NSString stringWithFormat:@"%@", [NSNumber numberWithInt:(20 + 10 * i)]];
+        [models addObject:model];
+    }
+    return models;
+}
+
+/**
+ 测试时 提示信息
+
+ @param model 对象
+ */
+- (void)showPormptViewWithModel:(WPGoodsModel *)model {
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"商品ID:%@  商品标题:%@  商品价格:￥%@  商品库存:%@件", model.goodId, model.title, model.price, model.inventory] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
+    [alertVC addAction:cancel];
+    [self presentViewController:alertVC animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
